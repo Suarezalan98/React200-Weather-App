@@ -6,7 +6,7 @@ export default class SearchBar extends React.Component {
     super(props);
     this.handlePresetCity = this.handlePresetCity.bind(this);
     this.handleCitySearch = this.handleCitySearch.bind(this);
-    this.handleSearchButton = this.handleSearchButton.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handlePresetCity(event) {
@@ -22,9 +22,9 @@ export default class SearchBar extends React.Component {
     dispatch(searchCity(value));
   }
 
-  handleSearchButton() {
+  handleSubmit(event) {
+    event.preventDefault();
     const { dispatch, city } = this.props;
-    console.log(city, "city");
     dispatch(getWeather(city));
   }
 
@@ -77,26 +77,24 @@ export default class SearchBar extends React.Component {
         >
           Tokyo
         </button>
-        <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name of City"
-            aria-label="Name of City"
-            aria-describedby="basic-addon2"
-            value={city}
-            onChange={this.handleCitySearch}
-          />
-          <div className="input-group-append">
-            <button
-              className="btn btn-dark btn-outline-light"
-              type="button"
-              onClick={this.handleSearchButton}
-            >
-              Search Here
-            </button>
+        <form onSubmit={this.handleSubmit}>
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Name of City"
+              aria-label="Name of City"
+              aria-describedby="basic-addon2"
+              value={city}
+              onChange={this.handleCitySearch}
+            />
+            <div className="input-group-append">
+              <button className="btn btn-dark btn-outline-light" type="submit">
+                Search Here
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

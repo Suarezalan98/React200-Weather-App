@@ -8,7 +8,6 @@ const app = express();
 
 app.use(morgan("dev"));
 app.use(express.static("dist"));
-app.use(express.static("public"));
 
 app.get("/search/:city", (req, res) => {
   const cityName = req.params.city;
