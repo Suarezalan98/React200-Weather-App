@@ -12,7 +12,7 @@
     "copy-html": "cp -R ./public/ ./dist/"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.1",
     "babel": "^6.3.26",
     "babel-loader": "^7.1.1",
     "babel-preset-airbnb": "^1.0.1",
